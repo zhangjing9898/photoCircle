@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="utf-8">
 
 	<head>
 		<meta charset="utf-8">
@@ -9,25 +9,39 @@
 		<title>摄影圈 </title>
 		<link rel="stylesheet" media="all" href="css/new.css" data-turbolinks-track="true" />
 		<link rel="stylesheet" media="all" href="css/home.css" data-turbolinks-track="true" />
+		<link rel="stylesheet" href="css/login.css" />
 	</head>
-
 	<body>
 		<header>
 			<nav class="navbar navbar-default navbar-static-top">
 				<div class="container">
 					<div class="navbar-header">
 						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
+				              <span class="sr-only">Toggle navigation</span>
+				              <span class="icon-bar"></span>
+				              <span class="icon-bar"></span>
+				              <span class="icon-bar"></span>
+			            </button>
 						<a class="navbar-brand" href="/">
 							<img class="" src="img/logo.png"> 摄影圈
 						</a>
+						<ul class="navbar-ul">
+							<li>
+								<a href="#manager" class="scrollto" data-toggle="modal" data-target="#manager" >管理员登录</a>
+							</li>
+							<li>
+								<a href="#login" class="scrollto" data-toggle="modal" data-target="#login">登录</a>
+							</li>
+							<li>
+								<a href="#register" class="scrollto" data-toggle="modal" data-target="#register">注册</a>
+							</li>
+						</ul>
 					</div>
 					<div class="collapse navbar-collapse" id="navbar-collapse">
 						<ul class="nav navbar-nav navbar-right">
+							<li>
+								<a href="#wechat" class="scrollto">器材剖析</a>
+							</li>
 							<li>
 								<a href="#services" class="scrollto">最新资讯</a>
 							</li>
@@ -501,7 +515,128 @@
 				</div>
 			</div>
 		</section>
-
+		<!-- Modal -->
+		<div class="modal fade" id="manager" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title-login" id="myModalLabel">Manager Sign In</h4>
+					</div>
+					<div class="modal-body">
+						<form method="post" action="" class="form-horizontal">
+							<div class="form-group has-feedback">
+								<div class="col-xs-12" style="margin-bottom:5px;">
+									<input id="username" name="username" type="text" aria-describedby="exampleInputEmail" placeholder="Email" class="form-control rounded" onkeyup="validateEmail();" oninput="validateEmail();">
+								</div>
+								<div id="validation-message" class="col-xs-12 validation-info login-email-validation"></div>
+							</div>
+							<div class="form-group has-feedback">
+								<div class="col-xs-12">
+									<input id="password" name="password" type="password" aria-describedby="exampleInputPassword" placeholder="Password" class="form-control rounded login-password" required><span aria-hidden="true" class="ti-key form-control-feedback"></span><span id="exampleInputPassword" class="sr-only">(default)</span>
+								</div>
+								<div id="validate-password" class="validation-info col-xs-12 login-email-validation"></div>
+							</div>
+							<div class="form-group">
+								<div class="col-xs-12">
+								</div>
+							</div>
+							<button type="submit" id="signin" class="btn btn-lg btn-success btn-raised btn-block">Sign In</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title-login" id="myModalLabel">Sign in</h4>
+					</div>
+					<div class="modal-body">
+						<form method="post" action="" class="form-horizontal">
+							<div class="form-group has-feedback">
+								<div class="col-xs-12" style="margin-bottom:5px;">
+									<input id="username" name="username" type="text" aria-describedby="exampleInputEmail" placeholder="Email" class="form-control rounded" onkeyup="validateEmail();" oninput="validateEmail();">
+								</div>
+								<div id="validation-message" class="col-xs-12 validation-info login-email-validation"></div>
+							</div>
+							<div class="form-group has-feedback">
+								<div class="col-xs-12">
+									<input id="password" name="password" type="password" aria-describedby="exampleInputPassword" placeholder="Password" class="form-control rounded login-password" required><span aria-hidden="true" class="ti-key form-control-feedback"></span><span id="exampleInputPassword" class="sr-only">(default)</span>
+								</div>
+								<div id="validate-password" class="validation-info col-xs-12 login-email-validation"></div>
+							</div>
+							<div class="form-group">
+								<div class="col-xs-12">
+								</div>
+							</div>
+							<button type="submit" id="signin" class="btn btn-lg btn-success btn-raised btn-block">Sign In</button>
+						</form>
+						<!--<div style="margin-top:15px;">
+							<a href="/portal/input_email" class="inline-block form-control-static forgot-password">Forgot Password?</a>
+						</div>-->
+						<hr style="margin-top:12px;">
+						<div class="form-horizontal">
+							<div class="clearfix">
+								<div class="pull-left">
+									<p class="form-control-static">Want new account?</p>
+								</div>
+								<div class="pull-right">
+									<a href="/portal/getstarted" class="btn btn-outline btn-default">Sign Up</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title-login" id="myModalLabel">Sign up</h4>
+					</div>
+					<div class="modal-body">
+						<form method="post" action="" class="form-horizontal">
+							<div class="form-group has-feedback">
+								<div class="col-xs-12" style="margin-bottom:5px;">
+									<input id="username" name="username" type="text" aria-describedby="exampleInputEmail" placeholder="Email" class="form-control rounded" onkeyup="validateEmail();" oninput="validateEmail();">
+								</div>
+								<div id="validation-message" class="col-xs-12 validation-info login-email-validation"></div>
+							</div>
+							<div class="form-group has-feedback">
+								<div class="col-xs-12">
+									<input id="password" name="password" type="password" aria-describedby="exampleInputPassword" placeholder="Password" class="form-control rounded login-password" required><span aria-hidden="true" class="ti-key form-control-feedback"></span><span id="exampleInputPassword" class="sr-only">(default)</span>
+								</div>
+								<div id="validate-password" class="validation-info col-xs-12 login-email-validation"></div>
+							</div>
+							<div class="form-group">
+								<div class="col-xs-12">
+								</div>
+							</div>
+							<button type="submit" id="signin" class="btn btn-lg btn-success btn-raised btn-block">Sign Up</button>
+						</form>
+						<!--<div style="margin-top:15px;">
+							<a href="/portal/input_email" class="inline-block form-control-static forgot-password">Forgot Password?</a>
+						</div>-->
+						<hr style="margin-top:12px;">
+						<div class="form-horizontal">
+							<div class="clearfix">
+								<div class="pull-left">
+									<p class="form-control-static">Had new account?</p>
+								</div>
+								<div class="pull-right">
+									<a href="/portal/getstarted" class="btn btn-outline btn-default">Sign In</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<footer>
 			<div class="container">
 				<div class="col-sm-8 text-left">&copy; 2018 成都师范学院<span></span></div>

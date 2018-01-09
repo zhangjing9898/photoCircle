@@ -1,0 +1,53 @@
+.navbar-default {
+  min-height: 60px;
+  margin-bottom: 0;
+  padding-top: 3px;
+  background-color: white;
+  border-color: white;
+}
+.navbar-default .navbar-brand {
+  font-family: "Microsoft YaHei", "宋体", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  color: #2f2e2e;
+  letter-spacing: 5px;
+}
+.navbar-default .navbar-brand img {
+  height: 28px;
+  margin-top: -4px;
+  display: inline;
+}
+.navbar-default .navbar-nav > li > a {
+  color: #2f2e2e;
+}
+.navbar-default .navbar-nav > li > a:hover {
+  color: #f28241;
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #2f2e2e;
+}
+.navbar-ul {
+  list-style: none;
+  float: right;
+  padding-top: 15px;
+  padding-right: 20px;
+}
+.navbar-ul li {
+  float: left;
+  margin-left: 20px;
+  font-family: "微软雅黑";
+  font-size: 16px;
+}
+.navbar-toggle {
+  border: none;
+}
+.navbar-toggle .icon-bar {
+  width: 28px;
+  height: 3px;
+}
+.navbar-toggle .icon-bar + .icon-bar {
+  margin-top: 5px;
+}
+.navbar-collapse {
+  overflow: hidden;
+}
