@@ -1,0 +1,155 @@
+.navbar-default {
+  min-height: 60px;
+  margin-bottom: 0;
+  padding-top: 3px;
+  background-color: black;
+  border-color: black;
+}
+.navbar-default .navbar-brand {
+  font-family: "Microsoft YaHei", "宋体", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  color: white;
+  letter-spacing: 5px;
+}
+.navbar-default .navbar-brand img {
+  height: 28px;
+  margin-top: -4px;
+  display: inline;
+}
+.navbar-default .navbar-nav > li > a {
+  color: white;
+}
+.navbar-default .navbar-nav > li > a:hover {
+  color: white;
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: white;
+}
+.navbar-ul {
+  list-style: none;
+  float: right;
+  padding-top: 15px;
+  padding-right: 20px;
+}
+.navbar-ul li {
+  float: left;
+  margin-left: 20px;
+  font-family: "微软雅黑";
+  font-size: 16px;
+}
+.navbar-ul li a {
+  color: white;
+}
+.navbar-toggle {
+  border: none;
+}
+.navbar-toggle .icon-bar {
+  width: 28px;
+  height: 3px;
+}
+.navbar-toggle .icon-bar + .icon-bar {
+  margin-top: 5px;
+}
+.navbar-collapse {
+  overflow: hidden;
+}
+.btn-success {
+  color: #fff;
+  background-color: #17a88b;
+  border-color: #17a88b;
+}
+.btn-success:hover {
+  color: #fff !important;
+  background-color: #149278 !important;
+  border-color: #149278 !important;
+}
+.btn-success .badge {
+  color: #17a88b;
+}
+.modal-content {
+  border-radius: 0;
+}
+.modal-header {
+  padding: 15px 20px;
+  border-bottom: none;
+}
+.modal-header .close {
+  outline: 0;
+}
+.modal-header .modal-title-login {
+  text-align: center;
+  font-size: 26px;
+}
+.modal-body {
+  padding: 20px;
+}
+.modal-footer {
+  border-top: none;
+}
+.form-control {
+  box-shadow: none;
+  font-size: 14px;
+  border: 1px solid #e6e6e6;
+  padding-left: 12px!important;
+}
+.form-control.rounded {
+  border-radius: 100px !important;
+}
+.form-control.focus,
+.form-control:focus {
+  box-shadow: none;
+}
+footer {
+  background-color: #2f2e2e;
+  color: #999;
+  padding: 30px 0;
+  line-height: 1.6;
+}
+footer .container div {
+  text-align: center;
+}
+footer .container span {
+  display: block;
+}
+.carousel {
+  margin-bottom: 20px;
+}
+.carousel .item {
+  background-color: #000000;
+}
+.carousel .item img {
+  width: 100%;
+}
+.navbar .container .navbar-collapse .header-search {
+  margin-top: 8px;
+  margin-left: 43px;
+}
+.navbar .container .navbar-collapse .navbar-nav {
+  float: right;
+}
+.container .task-area-title {
+  font-size: 15px;
+  font-family: 微软雅黑;
+}
+.container .task-area-title .info-img {
+  width: 36px;
+}
+.container .row .task-area {
+  text-align: center;
+  height: 317px;
+}
+.container .row .task-area .img-circle {
+  border-radius: 0;
+  width: 150px;
+  height: 150px;
+}
+.carousel-control .icon-prev,
+.carousel-control .icon-next,
+.carousel-control .fa-chevron-left,
+.carousel-control .fa-chevron-right {
+  position: absolute;
+  top: 50%;
+  z-index: 5;
+  display: inline-block;
+}

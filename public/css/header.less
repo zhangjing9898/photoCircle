@@ -1,0 +1,65 @@
+.navbar-default {
+    min-height: 60px;
+    margin-bottom: 0;
+    padding-top: 3px;
+    background-color: black;
+    border-color: black;
+    .navbar-brand {
+        font-family: "Microsoft YaHei", "宋体", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-weight: bold;
+        font-size: 18px;
+        color:white;
+        letter-spacing: 5px;
+        img {
+            height: 28px;
+            margin-top: -4px;
+            display: inline;
+        }
+    }
+    .navbar-nav {
+        &>li {
+            &>a {
+                color:white;
+                &:hover {
+                    color: white;
+                }
+            }
+        }
+    }
+    .navbar-toggle {
+        .icon-bar {
+            background-color: white;
+        }
+    }
+}
+.navbar-ul {
+    list-style: none;
+    float: right;
+    padding-top: 15px;
+    padding-right: 20px;
+    li {
+        float: left;
+        margin-left: 20px;
+        font-family: "微软雅黑";
+        font-size: 16px;
+        a{
+            color: white;
+        }
+    }
+}
+
+.navbar-toggle {
+    border: none;
+    .icon-bar {
+        width: 28px;
+        height: 3px;
+        &+.icon-bar {
+            margin-top: 5px;
+        }
+    }
+}
+
+.navbar-collapse {
+    overflow: hidden;
+}
+@import "login";

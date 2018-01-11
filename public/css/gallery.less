@@ -1,0 +1,38 @@
+.gallery{
+  width: 1000px;
+  column-width: 280px;
+  -webkit-column-width: 280px;
+  -moz-column-width: 280px;
+  -webkit-column-gap: 10px;
+  column-gap: 10px;
+  margin: 0 auto;
+  padding-top: 30px;
+  margin-bottom: 20px;
+  .white-panel{
+    display: block;
+    background: white;
+    border-bottom: 2px solid #c99a05;
+    padding: 8px;
+    padding-top: 20px;
+    img{
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+    }
+    h1 {
+      font-size: 1em;
+    }
+    a{
+      color: #8a6d3b;
+      font-size: 18px;
+    }
+    &:hover {
+      cursor: pointer;
+      border-bottom-color: #3c99b0;
+      -webkit-transition: all 0.3s ease-in-out;
+      -moz-transition: all 0.3s ease-in-out;
+      -o-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+    }
+  }
+}

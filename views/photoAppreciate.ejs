@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>佳片欣赏</title>
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/new.css" />
+    <link rel="stylesheet" href="css/photoAppreciate.css" />
+    <script type="text/javascript" src="js/new.js"></script>
+</head>
+
+<body>
+<header>
+    <%include header.ejs%>
+</header>
+<%include swiper.ejs%>
+
+    <nav class="secondary-nav">
+        <ul class="nav-list">
+            <li class="active" data-index="0">
+                <a target="_self" href="https://tuchong.com/2990340/">最热门</a>
+            </li>
+            <li class="" data-index="1">
+                <a target="_self" href="https://tuchong.com/2990340/videos/">风光</a>
+            </li>
+            <li class="" data-index="2">
+                <a target="_self" href="https://tuchong.com/2990340/favorites/">人像</a>
+            </li>
+            <li class="" data-index="3">
+                <a target="_self" href="https://tuchong.com/2990340/events/">城市</a>
+            </li>
+            <li class="" data-index="4">
+                <a target="_self" href="https://tuchong.com/2990340/albums/">旅行</a>
+            </li>
+            <li class="" data-index="5">
+                <a target="_self" href="https://tuchong.com/2990340/profile/">纪实</a>
+            </li>
+            <li class="" data-index="6">
+                <a target="_self" href="https://tuchong.com/2990340/collections/">街拍</a>
+            </li>
+        </ul>
+    </nav>
+<%include gallery.ejs%>
+<%include footer.ejs%>
+</body>
+
+</html>

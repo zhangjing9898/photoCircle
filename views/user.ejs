@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>摄影圈 - 个人信息</title>
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/new.css" />
+    <link rel="stylesheet" href="css/user.css" />
+    <script src="js/new.js" data-turbolinks-track="true"></script>
+    <script src="js/home.js" data-turbolinks-track="true"></script>
+</head>
+<body>
+<header>
+    <%include header.ejs%>
+</header>
+<main>
+    <div class="user-container">
+        <div class="personal-integer">
+            <div class="personal-banner" style="background-image: url(https://s1.tuchong.com/sites/299/2990340/header.jpg?1)">
+                <div class="posRelative personal-banner-info container">
+                    <a href="javascript:;" class="personal-logo-link">
+                        <img src="https://s1.tuchong.com/sites/299/2990340/logo_large.jpg?1">
+                    </a>
+                    <div class="personal-info">
+                        <div>
+                            <span class="info-name"> 郭半半 </span>
+                            <a href="javascript:;" class="follow-btn J-follow-btn btn" data-siteid="2990340" data-userid="3003087" data-isfollow="">
+                                关注
+                            </a>
+                        </div>
+                        <ul class="slash-list">
+                            <li class="slash-item">湖北-武汉</li>
+                            <li class="slash-item">
+                                <a href="https://tuchong.com/2990340/following/"> 关注 2 </a>
+                            </li>
+                            <li class="slash-item">
+                                <a href="https://tuchong.com/2990340/followers/"> 粉丝 19 </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="secondary-nav">
+            <ul class="nav-list">
+                <li class="active" data-index="0">
+                    <a target="_self" href="https://tuchong.com/2990340/">图文作品</a>
+                </li>
+                <li class="" data-index="1">
+                    <a target="_self" href="https://tuchong.com/2990340/videos/">视频作品</a>
+                </li>
+                <li class="" data-index="2">
+                    <a target="_self" href="https://tuchong.com/2990340/favorites/">喜欢</a>
+                </li>
+                <li class="" data-index="3">
+                    <a target="_self" href="https://tuchong.com/2990340/events/">活动</a>
+                </li>
+                <li class="" data-index="4">
+                    <a target="_self" href="https://tuchong.com/2990340/albums/">相册</a>
+                </li>
+                <li class="" data-index="5">
+                    <a target="_self" href="https://tuchong.com/2990340/profile/">资料</a>
+                </li>
+                <li class="" data-index="6">
+                    <a target="_self" href="https://tuchong.com/2990340/collections/">收藏夹</a>
+                </li>
+            </ul>
+        </nav>
+        <%include gallery.ejs%>
+    </div>
+</main>
+<%include footer.ejs%>
+</body>
+</html>
