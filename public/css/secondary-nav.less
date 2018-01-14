@@ -1,0 +1,54 @@
+.secondary-nav {
+  width: 100%;
+  height: 60px;
+  padding: 16px 0;
+  background-color: #fff;
+  -webkit-box-shadow: 0 2px 8px 0 rgba(133, 136, 138, .1);
+  -moz-box-shadow: 0 2px 8px 0 rgba(133, 136, 138, .1);
+  box-shadow: 0 2px 8px 0 rgba(133, 136, 138, .1);
+  position: relative!important;
+  .nav-list {
+    position: relative;
+    text-align: center;
+    font-size: 0;
+    li {
+      display: inline-block;
+      height: 28px;
+      font-size: 14px;
+      line-height: 28px;
+      a {
+        position: relative;
+        display: block;
+        height: 100%;
+        margin: 0 20px;
+        color: #222;
+        text-decoration: none;
+        &:hover {
+          border-bottom: 2px solid #c99a05;
+          color: #c99a05;
+        }
+      }
+      &.active {
+        a {
+          border-bottom: 2px solid #c99a05;
+        }
+      }
+      &.new-nav {
+        a {
+          &::after {
+            content: "";
+            position: absolute;
+            left: 27px;
+            top: 0;
+            width: 8px;
+            height: 8px;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border-radius: 4px;
+            background-color: #e60905;
+          }
+        }
+      }
+    }
+  }
+}

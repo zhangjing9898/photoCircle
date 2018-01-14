@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+    <meta charset="utf-8">
+    <title>器材 - 相机</title>
+    <link rel="stylesheet" href="css/new.css" />
+    <link rel="stylesheet" href="css/equipmentDetail.css"/>
+    <script src="js/new.js" data-turbolinks-track="true"></script>
+</head>
+
+<body>
+<%include header.ejs%>
+<nav class="secondary-nav">
+    <ul class="nav-list">
+        <li class="" data-index="0">
+            <a target="_self" href="/equipmentDetail">首页</a>
+        </li>
+        <li class="" data-index="1">
+            <a target="_self" href="/equipmentDetailCameraBody">机身</a>
+        </li>
+        <li class="active" data-index="2">
+            <a target="_self" href="/equipmentDetailCamera">相机</a>
+        </li>
+        <li class="" data-index="3">
+            <a target="_self" href="/equipmentDetailLen">镜头</a>
+        </li>
+        <li class="" data-index="4">
+            <a target="_self" href="/equipmentDetailPhone">手机</a>
+        </li>
+    </ul>
+</nav>
+<div class="container">
+    <main role="main" class="col-main col-xs-12">
+        <section>
+            <h2>相机</h2>
+            <div class="equip-index-table row clearfix">
+                <div class="col-1-5">
+                    <section class="card">
+                        <h3 class="card-header"><a href="https://tuchong.com/body/canon/">Canon(佳能)</a></h3>
+                        <ul class="inner">
+                            <li>
+                                <a href="https://tuchong.com/body/canon-eos-5d-mark-iii/">EOS 5D Mark III</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/canon-eos-6d/">EOS 6D</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/canon-eos-5d-mark-iv/">EOS 5D Mark IV</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/canon-eos-5d-mark-ii/">EOS 5D Mark II</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/camera-canon-eos-80d/">EOS 80D</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/canon-eos-70d/">EOS 70D</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/canon-eos-700d/">EOS 700D</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/canon-eos-60d/">EOS 60D</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/canon-eos-6d-mark-ii/">EOS 6D Mark II</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/canon-eos-750d/">EOS 750D</a>
+                            </li>
+                            <li class="more">
+                                <a href="https://tuchong.com/body/canon/">所有型号…</a>
+                            </li>
+                        </ul>
+                    </section>
+                </div>
+                <div class="col-1-5">
+                    <section class="card">
+                        <h3 class="card-header"><a href="https://tuchong.com/body/nikon/">Nikon(尼康)</a></h3>
+                        <ul class="inner">
+                            <li>
+                                <a href="https://tuchong.com/body/nikon-d750/">D750</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/nikon-d810/">D810</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/nikon-d7100/">D7100</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/nikon-d800/">D800</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/nikon-d610/">D610</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/nikon-d7000/">D7000</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/nikon-d7200/">D7200</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/nikon-d5300/">D5300</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/nikon-d700/">D700</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/nikon-d90/">D90</a>
+                            </li>
+                            <li class="more">
+                                <a href="https://tuchong.com/body/nikon/">所有型号…</a>
+                            </li>
+                        </ul>
+                    </section>
+                </div>
+                <div class="col-1-5">
+                    <section class="card">
+                        <h3 class="card-header"><a href="https://tuchong.com/body/sony/">SONY(索尼)</a></h3>
+                        <ul class="inner">
+                            <li>
+                                <a href="https://tuchong.com/body/sony-ilce-7m2/">ILCE-7M2</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/sony-ilce-7rm2/">ILCE-7RM2</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/sony-a6000/">ILCE-6000</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/sony-a7/">ILCE-7</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/sony-dsc-rx10m3/">DSC-RX10 III</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/sony-ilce-6300/">ILCE-6300</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/sony-a7r/">ILCE-7R</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/sony-ilce-5100/">ILCE-5100</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/sony-a5000/">ILCE-5000</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/sony-nex-5n/">NEX-5N</a>
+                            </li>
+                            <li class="more">
+                                <a href="https://tuchong.com/body/sony/">所有型号…</a>
+                            </li>
+                        </ul>
+                    </section>
+                </div>
+                <div class="col-1-5">
+                    <section class="card">
+                        <h3 class="card-header"><a href="https://tuchong.com/body/pentax/">PENTAX(宾得)</a></h3>
+                        <ul class="inner">
+                            <li>
+                                <a href="https://tuchong.com/body/pentax-k-50/">K-50</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/pentax-k-5-ii-s/">K-5 II s</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/pentax-k-5/">K-5</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/pentax-k-30/">K-30</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/pentax-k-5-ii/">K-5 II</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/pentax-k-r/">K-r</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/pentax-k-01/">K-01</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/pentax-k-x/">K-x</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/pentax-k10d/">K10D</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/pentax-k-7/">K-7</a>
+                            </li>
+                            <li class="more">
+                                <a href="https://tuchong.com/body/pentax/">所有型号…</a>
+                            </li>
+                        </ul>
+                    </section>
+                </div>
+                <div class="col-1-5">
+                    <section class="card">
+                        <h3 class="card-header"><a href="https://tuchong.com/body/olympus/">OLYMPUS(奥林巴斯)</a></h3>
+                        <ul class="inner">
+                            <li>
+                                <a href="https://tuchong.com/body/olympus-e-m1/">E-M1</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/olympus-e-p5/">E-P5</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/olympus-e-m5/">E-M5</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/olympus-e-m10/">E-M10</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/olympus-e-pl5/">E-PL5</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/olympus-e-pl2/">E-PL2</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/olympus-e-30/">E-30</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/olympus-e-pl6/">E-PL6</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/olympus-e-pl1/">E-PL1</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/body/olympus-e-620/">E-620</a>
+                            </li>
+                            <li class="more">
+                                <a href="https://tuchong.com/body/olympus/">所有型号…</a>
+                            </li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
+            <div class="equip-index-table row clearfix">
+                <div class="col-1-5">
+                    <section class="card">
+                        <h3 class="card-header">佳能EF卡口</h3>
+                        <ul class="inner">
+                            <li>
+                                <a href="https://tuchong.com/lens/canon-ef-24-70mm-f-2.8l-ii-usm/">Canon EF 24-70mm
+                                    f/2.8L II USM</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/canon-ef-24-105mm-f-4l-is-usm/">Canon EF 24-105mm f/4L
+                                    IS USM</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/canon-ef-50mm-f-1.4-usm/">Canon EF 50mm f/1.4 USM</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/canon-ef-70-200mm-f-2.8l-is-ii-usm/">Canon EF 70-200mm
+                                    f/2.8L IS II USM</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/canon-ef-s-18-135mm-f-3.5-5.6-is-stm/">Canon EF-S
+                                    18-135mm f/3.5-5.6 IS STM</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/canon-ef-50mm-f-1.2l-usm/">Canon EF 50mm f/1.2L
+                                    USM</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/canon-ef-24-70mm-f-2.8l-usm/">Canon EF 24-70mm f/2.8L
+                                    USM</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/canon-ef-16-35mm-f-2.8l-ii-usm/">Canon EF 16-35mm
+                                    f/2.8L II USM</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/canon-ef-50mm-f-1.8-ii/">Canon EF 50mm f/1.8 II</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/canon-ef-17-40mm-f-4l-usm/">Canon EF 17-40mm f/4L
+                                    USM</a>
+                            </li>
+                        </ul>
+                    </section>
+                </div>
+                <div class="col-1-5">
+                    <section class="card">
+                        <h3 class="card-header">尼康F卡口</h3>
+                        <ul class="inner">
+                            <li>
+                                <a href="https://tuchong.com/lens/af-s-zoom-nikkor-24-70mm-f-2.8g-ed/">AF-S Zoom-Nikkor
+                                    24-70mm f/2.8G ED</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/af-s-dx-vr-zoom-nikkor-18-105mm-f-3.5-5.6g-ed/">AF-S
+                                    DX VR Zoom-Nikkor 18-105mm f/3.5-5.6G ED</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/af-s-nikkor-50mm-f-1.8g/">AF-S Nikkor 50mm f/1.8G</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/af-nikkor-50mm-f-1.8d/">AF Nikkor 50mm f/1.8D</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/af-s-nikkor-24-120mm-f-4g-ed-vr/">AF-S Nikkor 24-120mm
+                                    f/4G ED VR</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/af-s-dx-nikkor-35mm-f-1.8g/">AF-S DX Nikkor 35mm
+                                    f/1.8G</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/af-s-nikkor-70-200mm-f-2.8g-ed-vr-ii/">AF-S Nikkor
+                                    70-200mm f/2.8G ED VR II</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/af-s-zoom-nikkor-14-24mm-f-2.8g-ed/">AF-S Zoom-Nikkor
+                                    14-24mm f/2.8G ED</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/af-s-nikkor-50mm-f-1.4g/">AF-S Nikkor 50mm f/1.4G</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/af-s-nikkor-85mm-f-1.8g/">AF-S Nikkor 85mm f/1.8G</a>
+                            </li>
+                        </ul>
+                    </section>
+                </div>
+                <div class="col-1-5">
+                    <section class="card">
+                        <h3 class="card-header">宾得K卡口</h3>
+                        <ul class="inner">
+                            <li>
+                                <a href="https://tuchong.com/lens/smc-pentax-da-18-55mm-f3.5-5.6-al/">smc PENTAX-DA
+                                    18-55mm F3.5-5.6 AL</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/smc-pentax-da-40mm-f2.8-limited/">smc PENTAX-DA 40mm
+                                    F2.8 Limited</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/lens-sigma-17-50mm-f2.8-ex-dc-hsm/">Sigma 17-50mm F2.8
+                                    EX DC HSM</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/smc-pentax-fa-43mm-f1.9-limited/">smc PENTAX-FA 43mm
+                                    F1.9 Limited</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/smc-pentax-fa-77mm-f1.8-limited/">smc PENTAX-FA 77mm
+                                    F1.8 Limited</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/smc-pentax-da*-50-135mm-f2.8-ed-if-sdm/">smc
+                                    PENTAX-DA* 50-135mm F2.8 ED [IF] SDM</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/smc-pentax-da-18-55mm-f3.5-5.6-al-wr/">smc PENTAX-DA
+                                    18-55mm F3.5-5.6 AL WR</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/smc-pentax-da-l-18-55mm-f3.5-5.6/">smc PENTAX-DA L
+                                    18-55mm F3.5-5.6</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/smc-pentax-da-16-45mm-f4-ed-al/">smc PENTAX-DA 16-45mm
+                                    F4 ED AL</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/smc-pentax-da*-16-50mm-f2.8-ed-al-if-sdm/">smc
+                                    PENTAX-DA* 16-50mm F2.8 ED AL [IF] SDM</a>
+                            </li>
+                        </ul>
+                    </section>
+                </div>
+                <div class="col-1-5">
+                    <section class="card">
+                        <h3 class="card-header">索尼α卡口</h3>
+                        <ul class="inner">
+                            <li>
+                                <a href="https://tuchong.com/lens/fe-16-35mm-f4-za-oss/">FE 16-35mm F4 ZA</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/carl-zeiss-vario-sonnar-t*-24-70mm-f2.8-za-ssm-sal-2470z/">Carl
+                                    Zeiss Vario-Sonnar T* 24-70mm F2.8 ZA SSM (SAL-2470Z)</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/minolta-sony-af-75-300mm-f4.5-5.6-d/">Minolta/Sony AF
+                                    75-300mm F4.5-5.6 (D)</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/minolta-sony-af-70-200mm-f2.8-g/">Minolta/Sony AF
+                                    70-200mm F2.8 G</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/minolta-af-50mm-f1.4-new/">Minolta AF 50mm F1.4
+                                    [New]</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/carl-zeiss-sonnar-t*-135mm-f1.8-za-(sal135f18z)/">Carl
+                                    Zeiss Sonnar T* 135mm F1.8 ZA (SAL135F18Z)</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/carl-zeiss-sonnar-t*-135mm-f1.8-za/">Carl Zeiss Sonnar
+                                    T* 135mm F1.8 ZA</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/minolta-sony-af-dt-18-70mm-f3.5-5.6-d/">Minolta/Sony
+                                    AF DT 18-70mm F3.5-5.6 (D)</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/minolta-af-50mm-f1.7/">Minolta AF 50mm F1.7</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/minolta-sony-135mm-f2.8-t4.5-stf/">Minolta/Sony 135mm
+                                    F2.8 [T4.5] STF</a>
+                            </li>
+                        </ul>
+                    </section>
+                </div>
+                <div class="col-1-5">
+                    <section class="card">
+                        <h3 class="card-header">4/3系统</h3>
+                        <ul class="inner">
+                            <li>
+                                <a href="https://tuchong.com/lens/lumix-g-vario-7-14-f4/">LUMIX G VARIO 7-14/F4</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/lumix-g-20mm-f1.7/">LUMIX G 20mm F1.7</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/olympus-zuiko-digital-ed-12-60mm-f2.8-4swd/">Olympus
+                                    Zuiko Digital ED 12-60mm F2.8-4SWD</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/olympus-m.zuiko-digital-17mm-f2.8-pancake/">Olympus
+                                    M.Zuiko Digital 17mm F2.8 Pancake</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/olympus-zuiko-digital-ed-14-42mm-f3.5-5.6/">Olympus
+                                    Zuiko Digital ED 14-42mm F3.5-5.6</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/olympus-zuiko-digital-14-45mm-f3.5-5.6/">Olympus Zuiko
+                                    Digital 14-45mm F3.5-5.6</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/olympus-m.17mm-f2.8/">OLYMPUS M.17mm F2.8</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/lumix-g-vario-14-45mm-f3.5-5.6/">LUMIX G VARIO 14-45mm
+                                    F3.5-5.6</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/olympus-m.9-18mm-f4-5.6/">OLYMPUS M.9-18mm F4-5.6</a>
+                            </li>
+                            <li>
+                                <a href="https://tuchong.com/lens/olympus-m.14-42mm-f3.5-5.6/">OLYMPUS M.14-42mm
+                                    F3.5-5.6</a>
+                            </li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
+            <p class="card inner" style="margin: 8px 0;">
+                其他品牌：
+                <a href="https://tuchong.com/lens/canon/">佳能</a>
+                <a href="https://tuchong.com/lens/nikon/">尼康</a>
+                <a href="https://tuchong.com/lens/pentax/">宾得</a>
+                <a href="https://tuchong.com/lens/sony/">索尼</a>
+                <a href="https://tuchong.com/lens/sigma/">适马</a>
+                <a href="https://tuchong.com/lens/tamron/">腾龙</a>
+                <a href="https://tuchong.com/lens/tokina/">图丽</a>
+                <a href="https://tuchong.com/lens/carl-zeiss/">卡尔蔡司</a>
+                <a href="https://tuchong.com/lens/olympus/">奥林巴斯</a>
+                <a href="https://tuchong.com/lens/panasonic/">松下</a>
+                <a href="https://tuchong.com/lens/leica/">莱卡</a>
+            </p>
+        </section>
+    </main>
+</div>
+<%include footer.ejs%>
+
+</body>
+
+</html>

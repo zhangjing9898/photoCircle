@@ -20,7 +20,12 @@ app.use("/avatar",express.static("./avatar"));
 app.get("/",router.index);                               //显示主页
 app.get("/user",router.user);                           //显示个人页面
 app.get("/photoAppreciate",router.appreciate);         //佳片欣赏
-
+app.get("/equipmentDetail",router.equipmentDetail);     //器材详情
+app.get("/equipmentDetailCameraBody",router.cameraBody);  //器材详情-机身
+app.get("/equipmentDetailCamera",router.camera);  //器材详情-相机
+app.get("/equipmentDetailLen",router.len);  //器材详情-
+app.get("/equipmentDetailPhone",router.phone);  //器材详情-
+app.get("/photoCourse",router.course);
 app.post("/new",router.new);                //记一笔
 app.post("/today",router.today);            //当日明细
 app.post("/week",router.week);              //最近一周的消费

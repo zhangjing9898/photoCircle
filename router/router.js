@@ -18,12 +18,41 @@ exports.index=function (req,res,next) {
 
 //用户页面
 exports.user=function (req,res,next) {
-    res.render("user.ejs");
+    res.render("user");
 };
 
 //佳片欣赏
 exports.appreciate=function (req,res,next) {
-    res.render("photoAppreciate.ejs");
+    res.render("photoAppreciate");
+}
+
+//器材推荐
+exports.equipmentDetail=function (req,res,next) {
+    res.render("equipmentDetail");
+}
+
+//器材推荐下-机身
+exports.cameraBody=function (req,res,next) {
+    res.render("equipmentDetailCameraBody");
+}
+
+//器材推荐下-相机
+exports.camera=function (req,res,next) {
+    res.render("equipmentDetailCamera");
+}
+
+//器材推荐下-镜头
+exports.len=function (req,res,next) {
+    res.render("equipmentDetailLen");
+}
+
+//器材推荐下-手机
+exports.phone=function (req,res,next) {
+    res.render("equipmentDetailPhone");
+}
+
+exports.course=function (req,res,next) {
+    res.render("photoCourse");
 }
 
 //记一笔
