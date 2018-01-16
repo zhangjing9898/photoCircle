@@ -6,15 +6,142 @@ var fs = require("fs");
 var gm = require("gm");
 var sd = require("silly-datetime");
 var  ObjectId = require('mongodb').ObjectID;
+var express=require("express");
+var app=express();
+session = require('express-session');
 
+//使用session
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true
+}));
 
-var resultMoney=0.0;
-var preDate=null;
 
 //主页
 exports.index=function (req,res,next) {
-    res.render("index");
+    if (req.session.login == "1") {
+        //如果登陆了
+        var username = req.session.username;
+        var login = true;
+    } else {
+        //没有登陆
+        var username = "未登录";  //制定一个空用户名
+        var login = false;
+    }
+    res.render("index",{
+        "login":login,
+        "username":username,
+        // "active": "首页"
+    });
 }
+
+//退出
+exports.exit=function (req,res) {
+    delete req.session.username;
+    req.session.login="-1";
+    res.redirect('/');
+}
+
+
+//执行登录
+exports.dologin=function (req,res,next) {
+    var form = new formidable.IncomingForm();
+
+    form.parse(req, function(err, fields, files) {
+        var dengluming = fields.dengluming;
+        var mima = fields.mima;
+        mima = md5(md5(mima).substr(4,7) + md5(mima));
+
+        //检索数据库，按登录名检索数据库，查看密码是否匹配
+        db.find("users",{"dengluming":dengluming},function(err,result){
+            // console.log(fields);
+            if(result.length == 0){
+                res.send("-2");  //-2没有这个人
+                return;
+            }
+            var shujukuzhongdemima = result[0].mima;
+            //要对用户这次输入的密码，进行相同的加密操作。然后与
+            //数据库中的密码进行比对
+            if(mima == shujukuzhongdemima){
+                req.session.login = "1";
+                req.session.username = dengluming;
+                res.send("1");  //成功
+            }else{
+                res.send("-1"); //密码不匹配
+            }
+        });
+    });
+    return;
+}
+
+//管理员验证登录
+exports.doManagerLogin=function (req,res,next) {
+    var form = new formidable.IncomingForm();
+
+    form.parse(req, function(err, fields, files) {
+        // console.log(fields);
+        var dengluming = fields.dengluming;
+        var mima = fields.mima;
+
+        //检索数据库，按登录名检索数据库，查看密码是否匹配
+        db.find("manager",{"dengluming":dengluming},function(err,result){
+            if(result.length == 0){
+                res.send("-2");  //-2没有这个人
+                return;
+            }
+            var shujukuzhongdemima = result[0].mima;
+            //要对用户这次输入的密码，进行相同的加密操作。然后与
+            //数据库中的密码进行比对
+            if(mima == shujukuzhongdemima){
+                req.session.login = "1";
+                req.session.username = dengluming;
+                res.send("1");  //成功
+            }else{
+                res.send("-1"); //密码不匹配
+            }
+        });
+    });
+    return;
+}
+
+//执行注册
+exports.doregist=function (req,res,next) {
+    var dengluming = req.query.dengluming;
+    var mima = req.query.mima;
+    //加密
+    console.log("111111");
+    mima = md5(md5(mima).substr(4,7) + md5(mima));
+
+    db.find("users", {"dengluming": dengluming}, function (err, result) {
+        if (err) {
+            res.send("-3"); //服务器错误
+            return;
+        }
+        if (result.length != 0) {
+            res.send("-1"); //被占用
+            return;
+        }
+        //没有相同的人，就可以执行接下来的代码了：
+
+        //现在可以证明，用户名没有被占用
+        //把用户名和密码存入数据库
+        db.insertOne("users",{
+            "dengluming" : dengluming,
+            "mima" : mima
+        },function(err,result){
+            if(err){
+                res.send("-1");
+                return;
+            }
+            req.session.login = "1";
+            req.session.username = dengluming;
+
+            res.send("1"); //注册成功，写入session
+        })
+    });
+}
+
 
 //用户页面
 exports.user=function (req,res,next) {
@@ -55,232 +182,42 @@ exports.course=function (req,res,next) {
     res.render("photoCourse");
 }
 
-//记一笔
-exports.new = function (req, res, next) {
-    var todayDate = sd.format(new Date(), 'YYYY-MM-DD');
-    //得到用户填写的东西
-    var form = new formidable.IncomingForm();
-    if(preDate==null){
-        preDate=todayDate;
+exports.uploadImg=function (req,res,next) {
+    //必须保证登陆
+    // if (req.session.login != "1") {
+    //     res.end("非法闯入，这个页面要求登陆！");
+    //     return;
+    // }
+    res.render("uploadImg",{
+        "login": req.session.login == "1" ? true : false,
+        "username": req.session.login == "1" ? req.session.username : ""
+    });
+}
+
+//上传图片
+exports.post("/upImg",function (req,res,next) {
+    //必须保证登陆
+    if (req.session.login != "1") {
+        res.end("非法闯入，这个页面要求登陆！");
+        return;
     }
+    var form = new formidable.IncomingForm();
+    form.uploadDir = path.normalize(__dirname + "/public/uploadImg");
     form.parse(req, function (err, fields, files) {
-        // console.log(fields);
-        res.send("1");
-        //得到表单之后做的事情
-        var username = fields.wechatname;
-        var detailId=fields.detailId;
-        var date = fields.date==null?todayDate:fields.date;
-        var style=fields.style==null?"":fields.style;
-        var type=fields.type==null?"投资理财":fields.type;
-        var title=fields.title==null?"投资理财":fields.title;
-        var changed=fields.changed==undefined?parseFloat(fields.putMoney):parseFloat(fields.changed);
-        var detail=fields.detail==null?'未填写消费细节':fields.detail;
-        // var putMoney=fields.putMoney==null?0:fields.putMoney;
-
-        //计算当日消费
-        if(type=="支出"||type=="投资理财"){
-            changed=0-changed;
-        }
-        if(type=="收入"){
-            changed=0+changed;
-        }
-
-        //计算
-        if(preDate!=date){
-            resultMoney=0.0;
-            preDate=todayDate;
-        }
-        if(preDate==date){
-            resultMoney=resultMoney+changed;
-        }
-        // console.log(resultMoney);
-        //_id是否存在
-        db.find("money", { "_id" : ObjectId(detailId)}, function (err, result) {
-
-            if (result.length != 0) {
-                //有，就更改
-                db.updateMany("money", { "_id" : ObjectId(detailId)}, {$set: { "date": date,
-                    "style": style,
-                    "type": type,
-                    "title": title,
-                    "changed": changed,
-                    "detail": detail}}, function (err, result) {
-                    // res.send("1");
-                })
+        console.log(files);
+        var ttt = sd.format(new Date(), 'YYYY-MM-DD');
+        var ran = parseInt(Math.random() * 89999 + 10000);
+        var oldpath = files.touxiang.path;
+        var name=files.touxiang.name;
+        var newpath = path.normalize(__dirname + "/public/uploadImg") + "/" +name;
+        var optionPath=newpath;
+        req.session.optionPath="http://127.0.0.1:3000/uploadImg"+"/"+name;
+        fs.rename(oldpath, newpath, function (err) {
+            if (err) {
+                res.send("失败");
                 return;
             }
-
-            db.insertOne("money", {
-                "username": username,
-                "date": date,
-                "style": style,
-                "type": type,
-                "title": title,
-                "changed": changed,
-                "detail": detail
-            }, function (err, result) {
-                if (err) {
-                    res.send("-3"); //服务器错误
-                    return;
-                }
-                //检查该数据库中是否存了那天的
-                db.find("allToday", {"date": date}, function (err, result) {
-                    if (err) {
-                        // res.send("-3"); //服务器错误
-                        return;
-                    }
-                    if (result.length != 0) {
-                        //有，就更改
-                        db.updateMany("allToday", {"date": date}, {$set: {"changed": resultMoney}}, function (err, result) {
-                            // res.send("1");
-                        })
-                        return;
-                    }
-                    //没有就插入
-                    db.insertOne("allToday", {
-                        "username": username,
-                        "date": date,
-                        "changed": resultMoney
-                    }, function (err, result) {
-                        if (err) {
-                            // res.send("-3");
-                            return;
-                        }
-                    })
-                })
-            })
-        })
-    });
-};
-
-//获取当日清单
-exports.today=function (req,res,next) {
-    //得到用户填写的东西
-    var form = new formidable.IncomingForm();
-    var todayDate = sd.format(new Date(), 'YYYY-MM-DD');
-    form.parse(req, function (err, fields, files) {
-        // console.log(fields);
-        var username=fields.wechatname;
-        db.find("money",{"username":username,"date":todayDate},{"sort":{"_id":-1}},function (err, result) {
-            res.json(result);
-        })
-    });
-};
-
-//计算消费 获取最近一周的清单
-exports.week=function (req,res,next) {
-    //得到用户填写的东西
-    var form = new formidable.IncomingForm();
-    var todayDate = sd.format(new Date(), 'YYYY-MM-DD');
-    form.parse(req, function (err, fields, files) {
-        // console.log(fields);
-        var username=fields.wechatname;
-        db.find("allToday",{},{"pageamount":3,"sort":{"_id":-1}},function(err,result){
-            res.json(result);
+            res.redirect("/uploadImg");
         });
     });
-};
-
-//获取全部消费
-exports.all=function (req,res,next) {
-    //得到用户填写的东西
-    var form = new formidable.IncomingForm();
-    form.parse(req, function (err, fields, files) {
-        // console.log(fields);
-        var username=fields.wechatname;
-        db.find("allToday",{"username":username},function (err, result) {
-            res.json(result);
-        })
-    });
-}
-
-//计算用户的余额
-exports.balance=function (req,res,next) {
-    //得到用户填写的东西
-    var form = new formidable.IncomingForm();
-
-    form.parse(req, function (err, fields, files) {
-        var balance=0;
-        var username=fields.wechatname;
-        var putMoney=fields.putMoney==null?0:fields.putMoney;
-        // console.log("putMoney"+putMoney);
-        db.find("allToday",{"username":username},function (err, result) {
-            for(var i =0;i<result.length;i++){
-                balance=balance+result[i].changed;
-            }
-            //记录余额
-            db.find("userBalance", {"username": username}, function (err, result) {
-                if (err) {
-                    // res.send("-3"); //服务器错误
-                    return;
-                }
-                if (result.length != 0) {
-                    //有，就更改
-                    db.updateMany("userBalance", {"username": username},{$set:{"balance":balance}},function (err,result) {
-                        // res.send("1");
-                    })
-                }else{
-                    //没有就插入
-                    db.insertOne("userBalance",{
-                        "username":username,
-                        "balance":balance
-                    },function (err, result) { if(err){
-
-                    } })
-                }
-
-                var resultBalance={
-                    "balance":balance
-                }
-                res.json(resultBalance);
-            })
-        })
-    });
-}
-
-//获取理财产品
-exports.products=function (req,res,next) {
-    //得到用户填写的东西
-    var form = new formidable.IncomingForm();
-    form.parse(req, function (err, fields, files) {
-        var username=fields.wechatname;
-        //得到用户余额
-        var calculateRate="0.096";
-        db.find("userBalance",{"username":username},function (err,result) {
-            calculateRate=result.balance>10000?"0.096":"0.12"
-        })
-        // console.log(calculateRate);
-        db.find("products",{"rate":calculateRate},function (err, result) {
-            // console.log(result);
-            res.json(result);
-        })
-    });
-}
-
-//单笔消费详情
-exports.detail=function (req,res,next) {
-    //得到用户填写的东西
-    var form = new formidable.IncomingForm();
-    form.parse(req, function (err, fields, files) {
-        var username=fields.wechatname;
-        var detailId=fields.detailId;
-
-        db.find("money",{ "_id" : ObjectId(detailId)},function (err, result) {
-            console.log(result);
-            res.json(result);
-        })
-    });
-};
-
-//删除单笔消费
-exports.delete=function (req,res,next) {
-    //得到用户填写的东西
-    var form = new formidable.IncomingForm();
-    form.parse(req, function (err, fields, files) {
-        var detailId=fields.detailId;
-        db.deleteMany("money",{ "_id" : ObjectId(detailId)},function (err, result) {
-            // console.log(result);
-            res.send("1");
-        })
-    });
-};
+})

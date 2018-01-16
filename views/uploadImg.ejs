@@ -1,0 +1,69 @@
+<!DOCTYPE html5>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>上传照片</title>
+    <link rel="stylesheet" href="css/new.css" />
+    <link rel="stylesheet" href="css/uploadImg.css" />
+</head>
+<body>
+<%include header.ejs%>
+<main>
+    <div class="content">
+        <div class="main-zone">
+            <a class="import-from-album icon-add lable-add">
+                <i class="fa fa-file"></i>	从本地选择图片
+            </a>
+            <form  action="/upImg" method="post" enctype="multipart/form-data" >
+                <ul class="photo-list">
+                    <li class="upload-item">
+                        <div class="upload-photo">
+                            <i class="glyphicon glyphicon-plus" style="font-size: 36px;"></i>
+                            <p>最大支持20MB的JPEG格式照片<br>不建议加画框和水印签名</p>
+                        </div>
+                        <input type="file" class="file-input" multiple accept="image/jpeg,image/jpg">
+                    </li>
+                </ul>
+                <textarea name="description" class="image-description" placeholder="添加此图描述..."></textarea>
+            </form>
+
+        </div>
+        <aside class="aside-zone">
+            <form class="post-form" action="/upImgDetail" method="post">
+                <label>标题</label>
+                <input type="text" class="m-input" name="title" value="" autofocus autocomplete="off">
+                <label>作品描述</label>
+                <textarea class="m-input" name="content" placeholder="说说你的拍摄经历..."></textarea>
+                <div class="widget-taginput">
+                    <label>标签<em>（输入标签内容回车即可添加标签）</em></label>
+                    <span class="tags-count">0/10</span>
+                    <div class="tags-wrap m-input">
+                        <input type="text" class="tag-input">
+                    </div>
+                    <label>常用标签</label>
+                    <div class="tags-mine">
+                    </div>
+                    <label>推荐标签</label>
+                    <div class="tags-recommend">
+                        <a class="tag-item">人像</a>
+                        <a class="tag-item">风光</a>
+                        <a class="tag-item">街拍</a>
+                        <a class="tag-item">城市</a>
+                        <a class="tag-item">旅行</a>
+                        <a class="tag-item">纪实</a>
+                        <a class="tag-item">色彩</a>
+                        <a class="tag-item">手机</a>
+                        <a class="tag-item">黑白</a>
+                        <a class="tag-item">胶片</a>
+                        <a class="tag-item">抓拍</a>
+                    </div>
+                </div>
+                <input type="submit" class="publish-btn" value="发布">
+            </form>
+        </aside>
+    </div>
+</main>
+<%include footer.ejs%>
+</body>
+</html>

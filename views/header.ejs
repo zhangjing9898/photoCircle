@@ -10,9 +10,20 @@
             <a class="navbar-brand" href="/">
                 <img class="" src="img/logo1.png"> 摄影圈
             </a>
+            <%
+            if(login){
+            %>
+            <ul class="navbar-ul">
+                <li><a>欢迎您！<%= username %></a></li>
+                <!--<li><a href="/userInfo">设置个人资料</a></li>-->
+                <li><a href="/exit">退出</a></li>
+            </ul>
+            <%
+            }else{
+            %>
             <ul class="navbar-ul">
                 <li>
-                    <a href="#manager" class="scrollto" data-toggle="modal" data-target="#manager" >管理员登录</a>
+                    <a href="#manager" class="scrollto" data-toggle="modal" data-target="#manager">管理员登录</a>
                 </li>
                 <li>
                     <a href="#login" class="scrollto" data-toggle="modal" data-target="#login">登录</a>
@@ -21,20 +32,20 @@
                     <a href="#register" class="scrollto" data-toggle="modal" data-target="#register">注册</a>
                 </li>
             </ul>
+            <%
+            }
+            %>
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="#wechat" class="scrollto">器材剖析</a>
+                    <a href="/equipmentDetail">器材剖析</a>
                 </li>
                 <li>
-                    <a href="#services" class="scrollto">最新资讯</a>
+                    <a href="/photoAppreciate">佳片欣赏</a>
                 </li>
                 <li>
-                    <a href="#portfolio" class="scrollto">佳作欣赏</a>
-                </li>
-                <li>
-                    <a href="#about" class="scrollto">摄影学堂</a>
+                    <a href="/photoCourse">摄影学堂</a>
                 </li>
             </ul>
         </div>
@@ -45,20 +56,25 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
                 <h4 class="modal-title-login" id="myModalLabel">Manager Sign In</h4>
             </div>
             <div class="modal-body">
                 <form method="post" action="" class="form-horizontal">
                     <div class="form-group has-feedback">
                         <div class="col-xs-12" style="margin-bottom:5px;">
-                            <input id="username" name="username" type="text" aria-describedby="exampleInputEmail" placeholder="Email" class="form-control rounded" onkeyup="" oninput="">
+                            <input id="username" name="username" type="text" aria-describedby="exampleInputEmail"
+                                   placeholder="Email" class="form-control rounded" onkeyup="" oninput="">
                         </div>
                         <div id="validation-message" class="col-xs-12 validation-info login-email-validation"></div>
                     </div>
                     <div class="form-group has-feedback">
                         <div class="col-xs-12">
-                            <input id="password" name="password" type="password" aria-describedby="exampleInputPassword" placeholder="Password" class="form-control rounded login-password" required><span aria-hidden="true" class="ti-key form-control-feedback"></span><span id="exampleInputPassword" class="sr-only">(default)</span>
+                            <input id="password" name="password" type="password" aria-describedby="exampleInputPassword"
+                                   placeholder="Password" class="form-control rounded login-password" required><span
+                                    aria-hidden="true" class="ti-key form-control-feedback"></span><span
+                                    id="exampleInputPassword" class="sr-only">(default)</span>
                         </div>
                         <div id="validate-password" class="validation-info col-xs-12 login-email-validation"></div>
                     </div>
@@ -66,7 +82,9 @@
                         <div class="col-xs-12">
                         </div>
                     </div>
-                    <button type="submit" id="signin" class="btn btn-lg btn-success btn-raised btn-block">Sign In</button>
+                    <button type="submit" id="managerSignin" class="btn btn-lg btn-success btn-raised btn-block">Sign
+                        In
+                    </button>
                 </form>
             </div>
         </div>
@@ -76,20 +94,26 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
                 <h4 class="modal-title-login" id="myModalLabel">Sign in</h4>
             </div>
             <div class="modal-body">
-                <form method="post" action="" class="form-horizontal">
+                <form class="form-horizontal">
                     <div class="form-group has-feedback">
                         <div class="col-xs-12" style="margin-bottom:5px;">
-                            <input id="username" name="username" type="text" aria-describedby="exampleInputEmail" placeholder="Email" class="form-control rounded" onkeyup=";" oninput="">
+                            <input id="LoginUsername" name="username" type="text" aria-describedby="exampleInputEmail"
+                                   placeholder="Email" class="form-control rounded" onkeyup=";" oninput="">
                         </div>
                         <div id="validation-message" class="col-xs-12 validation-info login-email-validation"></div>
                     </div>
                     <div class="form-group has-feedback">
                         <div class="col-xs-12">
-                            <input id="password" name="password" type="password" aria-describedby="exampleInputPassword" placeholder="Password" class="form-control rounded login-password" required><span aria-hidden="true" class="ti-key form-control-feedback"></span><span id="exampleInputPassword" class="sr-only">(default)</span>
+                            <input id="LoginPassword" name="password" type="password"
+                                   aria-describedby="exampleInputPassword" placeholder="Password"
+                                   class="form-control rounded login-password" required><span aria-hidden="true"
+                                                                                              class="ti-key form-control-feedback"></span><span
+                                    id="exampleInputPassword" class="sr-only">(default)</span>
                         </div>
                         <div id="validate-password" class="validation-info col-xs-12 login-email-validation"></div>
                     </div>
@@ -97,8 +121,11 @@
                         <div class="col-xs-12">
                         </div>
                     </div>
-                    <button type="submit" id="signin" class="btn btn-lg btn-success btn-raised btn-block">Sign In</button>
                 </form>
+                <button id="signin" class="btn btn-lg btn-success btn-raised btn-block">Sign In</button>
+                <div class="alert alert-danger" role="alert" id="cuowukuang" style="display: none;margin-top: 10px">
+                    密码不正确
+                </div>
                 <!--<div style="margin-top:15px;">
                     <a href="/portal/input_email" class="inline-block form-control-static forgot-password">Forgot Password?</a>
                 </div>-->
@@ -121,20 +148,26 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
                 <h4 class="modal-title-login" id="myModalLabel">Sign up</h4>
             </div>
             <div class="modal-body">
-                <form method="post" action="" class="form-horizontal">
+                <form method="get" action="" class="form-horizontal">
                     <div class="form-group has-feedback">
                         <div class="col-xs-12" style="margin-bottom:5px;">
-                            <input id="username" name="username" type="text" aria-describedby="exampleInputEmail" placeholder="Email" class="form-control rounded" onkeyup="" oninput="">
+                            <input id="regUsername" name="username" type="text" aria-describedby="exampleInputEmail"
+                                   placeholder="Email" class="form-control rounded" onkeyup="" oninput="">
                         </div>
                         <div id="validation-message" class="col-xs-12 validation-info login-email-validation"></div>
                     </div>
                     <div class="form-group has-feedback">
                         <div class="col-xs-12">
-                            <input id="password" name="password" type="password" aria-describedby="exampleInputPassword" placeholder="Password" class="form-control rounded login-password" required><span aria-hidden="true" class="ti-key form-control-feedback"></span><span id="exampleInputPassword" class="sr-only">(default)</span>
+                            <input id="regPassword" name="password" type="password"
+                                   aria-describedby="exampleInputPassword" placeholder="Password"
+                                   class="form-control rounded login-password" required><span aria-hidden="true"
+                                                                                              class="ti-key form-control-feedback"></span><span
+                                    id="exampleInputPassword" class="sr-only">(default)</span>
                         </div>
                         <div id="validate-password" class="validation-info col-xs-12 login-email-validation"></div>
                     </div>
@@ -142,11 +175,12 @@
                         <div class="col-xs-12">
                         </div>
                     </div>
-                    <button type="submit" id="signin" class="btn btn-lg btn-success btn-raised btn-block">Sign Up</button>
                 </form>
-                <!--<div style="margin-top:15px;">
-                    <a href="/portal/input_email" class="inline-block form-control-static forgot-password">Forgot Password?</a>
-                </div>-->
+                <button id="signup" class="btn btn-lg btn-success btn-raised btn-block">Sign Up</button>
+                <div class="alert alert-danger" role="alert" id="signupCheck"
+                     style="display: none;margin-top: 10px">
+                    密码不正确
+                </div>
                 <hr style="margin-top:12px;">
                 <div class="form-horizontal">
                     <div class="clearfix">
@@ -162,3 +196,48 @@
         </div>
     </div>
 </div>
+<!--<script src="js/jquery-1.11.1.min.js" data-turbolinks-track="true"></script>-->
+<script type="text/javascript">
+
+    //ajax提交表单
+    $("#signin").click(function () {
+        $.post("/dologin", {
+            "dengluming": $("#LoginUsername").val(),
+            "mima": $("#LoginPassword").val()
+        }, function (result) {
+            console.log("signin!");
+            console.log(result);
+            if (result == '1') {
+                alert("登录成功！将自动跳转到首页");
+                window.location = "/";
+            } else if (result == "-2") {
+                $("#cuowukuang").fadeIn();
+                $("#cuowukuang").html("该用户没有注册！");
+            } else if (result == "-1") {
+                $("#cuowukuang").fadeIn();
+                $("#cuowukuang").html("密码不正确");
+            }
+        })
+    })
+
+    //注册
+    $("#signup").click(function () {
+        $.get("/doregist", {
+            "dengluming": $("#regUsername").val(),
+            "mima": $("#regPassword").val()
+        }, function (result) {
+//            alert(result);
+            if (result == "1") {
+                alert("注册成功！将自动跳转到首页");
+                window.location = "/";
+            } else if (result == "-1") {
+                //用户名被占用
+                $("#signupCheck").fadeIn();
+                $("#signupCheck").html("用户名被占用啊！");
+            } else if (result == "-3") {
+                $("#signupCheck").fadeIn();
+                $("#signupCheck").html("注册失败！");
+            }
+        })
+    })
+</script>
