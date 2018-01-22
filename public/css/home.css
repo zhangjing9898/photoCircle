@@ -1,9 +1,20 @@
+@import "bootstrap.min.css";
+body {
+  background-color: #f9f9f9;
+}
 .navbar-default {
   min-height: 60px;
   margin-bottom: 0;
   padding-top: 3px;
   background-color: black;
   border-color: black;
+}
+.navbar-default .container {
+  position: relative;
+}
+.navbar-default .container #navbar-collapse ul li a {
+  font-family: 微软雅黑;
+  font-size: 15px;
 }
 .navbar-default .navbar-brand {
   font-family: "Microsoft YaHei", "宋体", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -31,6 +42,9 @@
   float: right;
   padding-top: 15px;
   padding-right: 20px;
+  position: absolute;
+  right: 100px;
+  top: 3px;
 }
 .navbar-ul li {
   float: left;
@@ -160,7 +174,6 @@
   margin-left: -10px;
   width: 30px;
   height: 30px;
-  background: url('/system/comfy/cms/files/files/000/000/003/original/loader.gif') no-repeat 50% 50%;
 }
 .modal-body .owl-controls {
   margin-top: 20px;
@@ -301,13 +314,12 @@ header {
   overflow: hidden;
 }
 #projects-container {
+  width: 1080px;
   margin: 0 auto;
-  visibility: hidden;
 }
 #projects-container .project-item {
   display: block;
   position: relative;
-  margin: 5px;
   width: 360px;
   -webkit-transform: scale(1);
   -moz-transform: scale(1);
@@ -315,7 +327,7 @@ header {
   transform: scale(1);
   opacity: 1;
   filter: alpha(opacity=100);
-  overflow: hidden;
+  float: left;
 }
 .project-item img {
   -webkit-transform: scale(1);
@@ -326,10 +338,10 @@ header {
   transition: transform 0.3s ease-out;
 }
 .project-item:hover img {
-  -webkit-transform: scale(1.3);
-  -moz-transform: scale(1.3);
-  -ms-transform: scale(1.3);
-  transform: scale(1.3);
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
 }
 .project-item:hover .hover-mask {
   opacity: 0.8;
@@ -651,6 +663,7 @@ a {
   clear: both;
   height: 30px;
   line-height: 30px;
+  list-style: none;
 }
 .newsBox .list a {
   line-height: 30px;

@@ -1,9 +1,24 @@
+
+@import "global";
 .navbar-default {
     min-height: 60px;
     margin-bottom: 0;
     padding-top: 3px;
     background-color: black;
     border-color: black;
+    .container{
+        position: relative;
+        #navbar-collapse{
+            ul{
+                li{
+                    a{
+                        font-family: 微软雅黑;
+                        font-size: 15px;
+                    }
+                }
+            }
+        }
+    }
     .navbar-brand {
         font-family: "Microsoft YaHei", "宋体", "Helvetica Neue", Helvetica, Arial, sans-serif;
         font-weight: bold;
@@ -37,6 +52,9 @@
     float: right;
     padding-top: 15px;
     padding-right: 20px;
+    position: absolute;
+    right:100px;
+    top:3px;
     li {
         float: left;
         margin-left: 20px;

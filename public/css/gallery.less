@@ -10,10 +10,13 @@
   margin-bottom: 20px;
   .white-panel{
     display: block;
-    background: white;
+    background: #f9f9f9;
     border-bottom: 2px solid #c99a05;
     padding: 8px;
     padding-top: 20px;
+    -webkit-column-break-inside: avoid; // avoid:避免在元素内部断行并产生新列
+    -moz-column-break-inside: avoid;
+    column-break-inside: avoid;
     img{
       width: 100%;
       max-width: 100%;

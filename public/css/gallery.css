@@ -11,10 +11,13 @@
 }
 .gallery .white-panel {
   display: block;
-  background: white;
+  background: #f9f9f9;
   border-bottom: 2px solid #c99a05;
   padding: 8px;
   padding-top: 20px;
+  -webkit-column-break-inside: avoid;
+  -moz-column-break-inside: avoid;
+  column-break-inside: avoid;
 }
 .gallery .white-panel img {
   width: 100%;

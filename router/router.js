@@ -1,4 +1,7 @@
+var express=require("express");
+var app=express();
 var formidable = require("formidable");
+session = require('express-session');
 var db = require("../model/db.js");
 var md5 = require("../model/md5.js");
 var path=require("path");
@@ -6,9 +9,7 @@ var fs = require("fs");
 var gm = require("gm");
 var sd = require("silly-datetime");
 var  ObjectId = require('mongodb').ObjectID;
-var express=require("express");
-var app=express();
-session = require('express-session');
+
 
 //使用session
 app.use(session({
@@ -16,7 +17,11 @@ app.use(session({
     resave: false,
     saveUninitialized: true
 }));
-
+//模板引擎
+app.set("view engine","ejs");
+//静态页面
+app.use(express.static("./public"));
+app.use("/avatar",express.static("./avatar"));
 
 //主页
 exports.index=function (req,res,next) {
@@ -145,79 +150,189 @@ exports.doregist=function (req,res,next) {
 
 //用户页面
 exports.user=function (req,res,next) {
-    res.render("user");
+    //必须保证登陆
+    if (req.session.login != "1") {
+        res.end("非法闯入，这个页面要求登陆！");
+        return;
+    }
+    res.render("user",{
+        "login": req.session.login == "1" ? true : false,
+        "username": req.session.login == "1" ? req.session.username : ""
+    });
+};
+//用户其他页面
+exports.userOtherPage=function (req,res,next) {
+    //必须保证登陆
+    if (req.session.login != "1") {
+        res.end("非法闯入，这个页面要求登陆！");
+        return;
+    }
+    res.render("userOtherPage",{
+        "login": req.session.login == "1" ? true : false,
+        "username": req.session.login == "1" ? req.session.username : ""
+    });
 };
 
 //佳片欣赏
 exports.appreciate=function (req,res,next) {
-    res.render("photoAppreciate");
+    //必须保证登陆
+    if (req.session.login != "1") {
+        res.end("非法闯入，这个页面要求登陆！");
+        return;
+    }
+    res.render("photoAppreciate",{
+        "login": req.session.login == "1" ? true : false,
+        "username": req.session.login == "1" ? req.session.username : ""
+    });
 }
 
 //器材推荐
 exports.equipmentDetail=function (req,res,next) {
-    res.render("equipmentDetail");
+    //必须保证登陆
+    if (req.session.login != "1") {
+        res.end("非法闯入，这个页面要求登陆！");
+        return;
+    }
+    res.render("equipmentDetail",{
+        "login": req.session.login == "1" ? true : false,
+        "username": req.session.login == "1" ? req.session.username : ""
+    });
 }
 
 //器材推荐下-机身
 exports.cameraBody=function (req,res,next) {
-    res.render("equipmentDetailCameraBody");
+    //必须保证登陆
+    if (req.session.login != "1") {
+        res.end("非法闯入，这个页面要求登陆！");
+        return;
+    }
+    res.render("equipmentDetailCameraBody",{
+        "login": req.session.login == "1" ? true : false,
+        "username": req.session.login == "1" ? req.session.username : ""
+    });
 }
 
 //器材推荐下-相机
 exports.camera=function (req,res,next) {
-    res.render("equipmentDetailCamera");
+    //必须保证登陆
+    if (req.session.login != "1") {
+        res.end("非法闯入，这个页面要求登陆！");
+        return;
+    }
+    res.render("equipmentDetailCamera",{
+        "login": req.session.login == "1" ? true : false,
+        "username": req.session.login == "1" ? req.session.username : ""
+    });
 }
 
 //器材推荐下-镜头
 exports.len=function (req,res,next) {
-    res.render("equipmentDetailLen");
+    //必须保证登陆
+    if (req.session.login != "1") {
+        res.end("非法闯入，这个页面要求登陆！");
+        return;
+    }
+    res.render("equipmentDetailLen",{
+        "login": req.session.login == "1" ? true : false,
+        "username": req.session.login == "1" ? req.session.username : ""
+    });
 }
 
 //器材推荐下-手机
 exports.phone=function (req,res,next) {
-    res.render("equipmentDetailPhone");
+    //必须保证登陆
+    if (req.session.login != "1") {
+        res.end("非法闯入，这个页面要求登陆！");
+        return;
+    }
+    res.render("equipmentDetailPhone",{
+        "login": req.session.login == "1" ? true : false,
+        "username": req.session.login == "1" ? req.session.username : ""
+    });
 }
 
 exports.course=function (req,res,next) {
-    res.render("photoCourse");
+    //必须保证登陆
+    if (req.session.login != "1") {
+        res.end("非法闯入，这个页面要求登陆！");
+        return;
+    }
+    res.render("photoCourse",{
+        "login": req.session.login == "1" ? true : false,
+        "username": req.session.login == "1" ? req.session.username : ""
+    });
 }
 
 exports.uploadImg=function (req,res,next) {
     //必须保证登陆
-    // if (req.session.login != "1") {
-    //     res.end("非法闯入，这个页面要求登陆！");
-    //     return;
-    // }
+    if (req.session.login != "1") {
+        res.end("非法闯入，这个页面要求登陆！");
+        return;
+    }
     res.render("uploadImg",{
         "login": req.session.login == "1" ? true : false,
         "username": req.session.login == "1" ? req.session.username : ""
     });
 }
 
-//上传图片
-exports.post("/upImg",function (req,res,next) {
+//显示用户图片
+exports.showImg=function (req,res,next) {
     //必须保证登陆
     if (req.session.login != "1") {
-        res.end("非法闯入，这个页面要求登陆！");
         return;
     }
-    var form = new formidable.IncomingForm();
-    form.uploadDir = path.normalize(__dirname + "/public/uploadImg");
-    form.parse(req, function (err, fields, files) {
-        console.log(files);
-        var ttt = sd.format(new Date(), 'YYYY-MM-DD');
-        var ran = parseInt(Math.random() * 89999 + 10000);
-        var oldpath = files.touxiang.path;
-        var name=files.touxiang.name;
-        var newpath = path.normalize(__dirname + "/public/uploadImg") + "/" +name;
-        var optionPath=newpath;
-        req.session.optionPath="http://127.0.0.1:3000/uploadImg"+"/"+name;
-        fs.rename(oldpath, newpath, function (err) {
-            if (err) {
-                res.send("失败");
-                return;
-            }
-            res.redirect("/uploadImg");
-        });
-    });
-})
+    var dengluming=req.session.username;
+    db.find("Img",{"dengluming":dengluming},function (err,result) {
+        if(err){
+            res.json("")
+            return;
+        }
+        res.json(result);
+    })
+}
+
+
+//用户详情
+exports.userInfoData=function (req,res,next) {
+    var dengluming=req.session.username;
+    let firstJson=[{
+        "dengluming":dengluming,
+        "address":"中国",
+        "follow":0,
+        "follower":0
+    }]
+    db.find("userInfo",{"dengluming":dengluming},function (err,result) {
+        if(err){
+            res.json("")
+            return;
+        }else if(result.length==0){
+            res.json(firstJson);
+            return;
+        }
+        res.json(result);
+    })
+}
+
+//文章详情
+exports.articleData=function (req,res,next) {
+    db.find("article",{},function (err,result) {
+        if(err){
+            res.json("")
+            return;
+        }
+        res.json(result);
+    })
+};
+
+//删除图片
+exports.deleteImg=function (req,res,next) {
+    var deleteid = req.query.deleteid;
+    //插入数据到DB中
+    db.deleteMany("Img", {"_id": ObjectId(deleteid)}, function (err, result) {
+        if (err) {
+            res.send("-1");
+            return;
+        }
+        res.send("1"); //删除成功
+    })
+}

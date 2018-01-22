@@ -1,3 +1,4 @@
+@import "bootstrap.min.css";
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -9,12 +10,22 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+body {
+  background-color: #f9f9f9;
+}
 .navbar-default {
   min-height: 60px;
   margin-bottom: 0;
   padding-top: 3px;
   background-color: black;
   border-color: black;
+}
+.navbar-default .container {
+  position: relative;
+}
+.navbar-default .container #navbar-collapse ul li a {
+  font-family: 微软雅黑;
+  font-size: 15px;
 }
 .navbar-default .navbar-brand {
   font-family: "Microsoft YaHei", "宋体", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -42,6 +53,9 @@
   float: right;
   padding-top: 15px;
   padding-right: 20px;
+  position: absolute;
+  right: 100px;
+  top: 3px;
 }
 .navbar-ul li {
   float: left;
