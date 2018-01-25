@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>佳片欣赏</title>
-    <link rel="stylesheet" href="css/font-awesome.min.css" />
-    <link rel="stylesheet" href="css/photoAppreciate.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="css/photoAppreciate.css"/>
+    <link rel="stylesheet" href="css/gallery.css" />
     <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/swiper.js"></script>
@@ -13,37 +14,111 @@
 
 <body>
 <header>
-    <%include header.ejs%>
+    <% include header.ejs %>
 </header>
-<%include swiper.ejs%>
+<% include swiper.ejs %>
 
-    <nav class="secondary-nav">
-        <ul class="nav-list">
-            <li class="active" data-index="0">
-                <a target="_self" href="http://127.0.0.1:3000/photoAppreciate">最热门</a>
-            </li>
-            <!--<li class="" data-index="1">-->
-                <!--<a target="_self" href="http://127.0.0.1:3000/photoAppreciate">风光</a>-->
-            <!--</li>-->
-            <!--<li class="" data-index="2">-->
-                <!--<a target="_self" href="https://tuchong.com/2990340/favorites/">人像</a>-->
-            <!--</li>-->
-            <!--<li class="" data-index="3">-->
-                <!--<a target="_self" href="https://tuchong.com/2990340/events/">城市</a>-->
-            <!--</li>-->
-            <!--<li class="" data-index="4">-->
-                <!--<a target="_self" href="https://tuchong.com/2990340/albums/">旅行</a>-->
-            <!--</li>-->
-            <!--<li class="" data-index="5">-->
-                <!--<a target="_self" href="https://tuchong.com/2990340/profile/">纪实</a>-->
-            <!--</li>-->
-            <!--<li class="" data-index="6">-->
-                <!--<a target="_self" href="https://tuchong.com/2990340/collections/">街拍</a>-->
-            <!--</li>-->
-        </ul>
-    </nav>
-<%include gallery.ejs%>
-<%include footer.ejs%>
+<nav class="secondary-nav">
+    <ul class="nav-list">
+        <li class="active" data-index="0">
+            <a target="_self" href="http://127.0.0.1:3000/photoAppreciate">最热门</a>
+        </li>
+        <!--<li class="" data-index="1">-->
+        <!--<a target="_self" href="http://127.0.0.1:3000/photoAppreciate">风光</a>-->
+        <!--</li>-->
+        <!--<li class="" data-index="2">-->
+        <!--<a target="_self" href="https://tuchong.com/2990340/favorites/">人像</a>-->
+        <!--</li>-->
+        <!--<li class="" data-index="3">-->
+        <!--<a target="_self" href="https://tuchong.com/2990340/events/">城市</a>-->
+        <!--</li>-->
+        <!--<li class="" data-index="4">-->
+        <!--<a target="_self" href="https://tuchong.com/2990340/albums/">旅行</a>-->
+        <!--</li>-->
+        <!--<li class="" data-index="5">-->
+        <!--<a target="_self" href="https://tuchong.com/2990340/profile/">纪实</a>-->
+        <!--</li>-->
+        <!--<li class="" data-index="6">-->
+        <!--<a target="_self" href="https://tuchong.com/2990340/collections/">街拍</a>-->
+        <!--</li>-->
+    </ul>
+</nav>
+<div class="gallery" id="galleryHotArea">
+</div>
+<div class="loadEffect" id="loading">
+    <div><span></span></div>
+    <div><span></span></div>
+    <div><span></span></div>
+    <div><span></span></div>
+</div>
+<div class="pagelist-load-end" id="loadEnd" style="display: none;">没有更多图片了</div>
+<% include footer.ejs %>
+<script type="text/template" id="hotImgTemplate">
+    <div class="white-panel">
+        <img src="{{=cover_image_src}}"/>
+        <h1><a href="#">{{=tags[0].tag_name}}</a></h1>
+        <p>{{=title}}</p>
+    </div>
+</script>
+
+<script type="text/javascript">
+    getImg(0);
+    $(document).ready(function() {
+        let count=0;
+        $(window).scroll(function() {
+            //$(document).scrollTop() 获取垂直滚动的距离
+            //$(document).scrollLeft() 这是获取水平滚动条的距离
+            if ($(document).scrollTop() <= 0) {
+//                alert("滚动条已经到达顶部为0");
+            }
+
+
+            if ($(document).scrollTop() >= $(document).height() - $(window).height()) {
+//                alert("滚动条已经到达底部为" + $(document).scrollTop());
+                $("#loading").fadeIn();
+                count++;
+                getImg(count);
+            }
+        });
+    });
+    //显示用户图片
+    //    得到模板函数
+
+    function getImg(page) {
+        var compilehotImg = _.template($("#hotImgTemplate").html());
+        //ajax服务，获取信息
+        $.ajax({
+            "url": "/hotImgData?page="+page,
+            "type": "get",
+            "success": function (result) {
+
+                if(result=="101"){
+                    $("#loading").fadeOut();
+                    $("#loadEnd").css("display","block");
+                    return;
+                }
+                let result1=result.postList;
+                iterator(0);
+                function iterator(i) {
+                    if (i == result1.length) {
+                        //在这里书写请求完毕之后做的事情
+                        return;  //不用继续迭代了
+                    }
+                    if(result1[i].cover_image_src==null){
+                        iterator(i + 1);
+                    }else{
+                        //组装模板
+                        let htmlstring = compilehotImg(result1[i]);
+                        $("#galleryHotArea").append($(htmlstring));
+                        iterator(i + 1);
+                    }
+
+                }
+            }
+        })
+    }
+
+</script>
 </body>
 
 </html>

@@ -28,10 +28,31 @@
                 <div class="widget-courselist">
                     <ul class="pagelist-wrapper" id="articleArea">
                     </ul>
-                    <i class="icon-loading--yellow" style="display: none;"></i>
                 </div>
             </div>
         </div>
+        <nav aria-label="..." class="text-right">
+            <ul class="pagination">
+                <li class="disabled">
+                        <span aria-hidden="true">&laquo;</span>
+                </li>
+                <li class="active">
+                    <span>1</span>
+                </li>
+                <li>
+                    <span>2</span>
+                </li>
+                <li class="">
+                    <span>3</span>
+                </li>
+                <li class="">
+                    <span>4</span>
+                </li>
+                <li class="disabled">
+                    <span aria-hidden="true">&raquo;</span>
+                </li>
+            </ul>
+        </nav>
     </div>
 </main>
 <% include footer.ejs %>
@@ -40,47 +61,67 @@
 <script type="text/template" id="articleTemplate">
     <li class="impression-item impression-viewed" data-post-id="">
         <a href="#" class="item-cover" target="_blank">
-            <img src="{{=ImgPath}}">
+            <img src="{{=title_image.url}}">
         </a>
         <div class="item-info">
-            <a href="#" class="item-title" title="{{=title}}"
+            <a href="{{=url}}" class="item-title" title="{{=title}}"
                target="_blank">{{=title}}</a>
             <p class="item-desc">
-                {{=content}}
+                {{=excerpt}}
             </p>
         </div>
         <div class="item-related">
             <div class="item-handler">
-                <span>{{=author}}</span>
-                <span> |{{=readNum}}阅读 · {{=likeNum}}喜欢 · {{=comments}}评论</span>
+                <span>用户编号:{{=author_id}}</span>
+                <span>  | {{=views}}阅读 · {{=favorites}}喜欢 · {{=comments}}评论</span>
             </div>
         </div>
     </li>
 </script>
 
 <script type="text/javascript">
+    getArticle(0);
+    //分页
+    $(".pagination li span").click(function () {
+        var that=this;
+        var val=$(that).text();
+        var event = event || window.event;
+        var target = event.srcElement || event.target;
+        $(target).parent().addClass("active");
+        $(target).parent().siblings().removeClass("active");
+        getArticle(val-1);
+    });
 
-    var compileArticle=_.template($("#articleTemplate").html());
-    $.ajax({
-        "url": "/articleData",
-        "type": "get",
-        "success": function (result) {
-            //result是一个数组
-            iterator(0);
-            //迭代器
-            function iterator(i) {
-                if (i == result.length) {
-                    //在这里书写请求完毕之后做的事情
-                    return;  //不用继续迭代了
+    function getArticle(page) {
+        $("#articleArea").html("");
+        var compileArticle = _.template($("#articleTemplate").html());
+        $.ajax({
+            "url": "/articleData?page="+page,
+            "type": "get",
+            "success": function (result) {
+                if(result=="101"){
+//                    $("#loading").fadeOut();
+//                    $("#loadEnd").css("display","block");
+                    return;
                 }
-                //组装模板
-                let htmlstring = compileArticle(result[i]);
-                //添加DOM
-                $("#articleArea").append($(htmlstring));
-                iterator(i + 1);
+                let result1 = result.posts;
+                iterator(0);
+                //迭代器
+                function iterator(i) {
+                    if (i == result1.length) {
+                        //在这里书写请求完毕之后做的事情
+                        return;  //不用继续迭代了
+                    }
+                    //组装模板
+                    let htmlstring = compileArticle(result1[i]);
+                    //添加DOM
+                    $("#articleArea").append($(htmlstring));
+                    iterator(i + 1);
+                }
             }
-        }
-    })
+        })
+    }
+
 </script>
 </body>
 

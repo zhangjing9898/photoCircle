@@ -1,4 +1,5 @@
 @import "bootstrap.min.css";
+@import "loading.css";
 body {
   background-color: #f9f9f9;
 }

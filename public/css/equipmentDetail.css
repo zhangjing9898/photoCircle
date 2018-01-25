@@ -384,6 +384,11 @@ body {
   width: 100%;
   float: none;
 }
+.table-style {
+  background-color: white;
+  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.075);
+}
 footer {
   background-color: #2f2e2e;
   color: #999;

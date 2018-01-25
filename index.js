@@ -40,6 +40,7 @@ app.get("/showImg",router.showImg);                                 //显示用�
 app.get("/userInfoData",router.userInfoData);
 app.get("/articleData",router.articleData);
 app.get("/deleteImg",router.deleteImg);
+app.get("/hotImgData",router.hotImgData);
 app.post("/upImg",function (req, res, next) {
     //必须保证登陆
     if (req.session.login != "1") {

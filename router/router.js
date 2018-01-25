@@ -315,14 +315,33 @@ exports.userInfoData=function (req,res,next) {
 
 //文章详情
 exports.articleData=function (req,res,next) {
-    db.find("article",{},function (err,result) {
-        if(err){
+    var page=req.query.page;
+    db.find("course",{},function (err,result) {
+        if(page>=result.length){
+            res.send("101");
+            return;
+        }else if(err){
             res.json("")
             return;
         }
-        res.json(result);
+        res.json(result[page]);
     })
 };
+
+//佳片显示
+exports.hotImgData=function (req,res,next) {
+    var page=req.query.page;
+    db.find("Photo",{},function (err,result) {
+        if(page>=result.length){
+            res.send("101");
+            return;
+        }else if(err){
+            res.json("")
+            return;
+        }
+        res.json(result[page]);
+    })
+}
 
 //删除图片
 exports.deleteImg=function (req,res,next) {
