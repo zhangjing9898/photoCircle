@@ -343,6 +343,16 @@ exports.hotImgData=function (req,res,next) {
     })
 }
 
+exports.userList=function (req,res,next) {
+    db.find("users",{},function (err,result) {
+        if(err){
+            res.json("")
+            return;
+        }
+        res.json(result);
+    })
+}
+
 //删除图片
 exports.deleteImg=function (req,res,next) {
     var deleteid = req.query.deleteid;

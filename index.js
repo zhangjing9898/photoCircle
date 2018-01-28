@@ -83,4 +83,8 @@ app.post("/upImg",function (req, res, next) {
         });
     });
 });
+
+
+//测试
+app.get("/api/userList",router.userList);
 app.listen(3000);
