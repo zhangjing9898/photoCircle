@@ -31,7 +31,7 @@
         </li>
     </ul>
 </nav>
-<div class="container">
+<div class="container" id="detail-container">
     <main role="main" class="col-main col-xs-12">
             <h2>镜头</h2>
         <table class="table table-style table-striped">
@@ -349,7 +349,9 @@
     </main>
 </div>
 <%include footer.ejs%>
-
+<script>
+    $("#detail-container a").attr("href","#");
+</script>
 </body>
 
 </html>
