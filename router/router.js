@@ -365,3 +365,22 @@ exports.deleteImg=function (req,res,next) {
         res.send("1"); //删除成功
     })
 }
+//新闻详情
+exports.newDetail = function(req,res,next){
+    if (req.session.login == "1") {
+        //如果登陆了
+        var username = req.session.username;
+        var login = true;
+    } else {
+        //没有登陆
+        var username = "未登录";  //制定一个空用户名
+        var login = false;
+    }
+    var uniquekey = req.params["id"];
+    res.render("newDetail",{
+        "login":login,
+        "username":username,
+        "uniquekey": uniquekey
+    });
+    next();
+}

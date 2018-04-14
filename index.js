@@ -83,8 +83,9 @@ app.post("/upImg",function (req, res, next) {
         });
     });
 });
-
+app.get("/detail/:id",router.newDetail);                           //新闻详情
 
 //测试
 app.get("/api/userList",router.userList);
+
 app.listen(3000);

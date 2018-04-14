@@ -658,6 +658,7 @@ a {
 }
 .newsBox .list {
   margin-bottom: 20px;
+  padding-left: 0px;
 }
 .newsBox .list li {
   clear: both;
